@@ -94,9 +94,9 @@
 
 
     <div class="form-group row mb-2">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="reset" class="btn btn-warning">Reset</button>
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary float-end m-2">Save</button>
+            <button type="reset" class="btn btn-warning float-end m-2">Reset</button>
         </div>
     </div>
 </form>

@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+    @stack('css')
 </head>
 
 <body>
@@ -36,6 +37,7 @@
     <script src="{{asset('js/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
+    @stack('js')
 </body>
 
 </html>

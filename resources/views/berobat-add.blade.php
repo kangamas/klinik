@@ -13,7 +13,7 @@
     <div class="form-group row mb-2">
         <label for="inputPassword3" class="col-sm-3 col-form-label">Nama Pasien</label>
         <div class="col-sm-9">
-            <select name="pasien_id" class="form-control" required>
+            <select name="pasien_id" class="form-control select2" required>
                 <option value="">-Pilih-</option>
                 @foreach ($pasiens as $pasien)
                 <option value="{{$pasien->pasien_id}}">{{$pasien->nama_pasien}}</option>
@@ -55,7 +55,7 @@
     <div class="form-group row mb-2">
         <label for="inputPassword3" class="col-sm-3 col-form-label">Nama Dokter</label>
         <div class="col-sm-9">
-            <select name="dokter_id" class="form-control" required>
+            <select name="dokter_id" class="form-control select2" required>
                 <option value="">-Pilih-</option>
                 @foreach ($dokter as $dokter_item)
                 <option value="{{$dokter_item->dokter_id}}">{{$dokter_item->nama_dokter}}</option>
@@ -85,3 +85,16 @@
     </div>
 </form>
 @endsection
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+</script>
+@endpush

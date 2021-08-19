@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BerobatController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,7 @@ Route::post('/berobat-post', [BerobatController::class, 'store'])->name('berobat
 Route::get('/berobat-edit/{id_transaksi}', [BerobatController::class, 'edit'])->name('berobat.edit');
 Route::patch('/berobat-update/{id_transaksi}', [BerobatController::class, 'update'])->name('berobat.update');
 Route::delete('/berobat-delete/{id_transaksi}', [BerobatController::class, 'delete'])->name('berobat.delete');
+//pasien
+Route::get('/pasien', [PasienController::class, 'index'])->name('pasien.index');
+Route::get('/pasien-add', [PasienController::class, 'add'])->name('pasien.add');
+Route::get('/pasien-edit/{id}', [PasienController::class, 'edit'])->name('pasien.edit');

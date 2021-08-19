@@ -2,7 +2,8 @@
 <div class="border-end bg-white" id="sidebar-wrapper">
     <div class="sidebar-heading border-bottom bg-secondary  text-light">MENU</div>
     <div class="list-group list-group-flush">
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Data Pasien</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3"
+            href="{{route('pasien.index')}}">Data Pasien</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Data Dokter</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Data Poli</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3"

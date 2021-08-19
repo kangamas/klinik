@@ -31,8 +31,11 @@ class BerobatController extends Controller
         $data['pasiens'] = DB::table('pasien')->get();
         $data['dokter'] = DB::table('dokter')->get();
 
-        $count_berobat = DB::table('berobat')->count() + 1;
-        $data['no_transaksi'] = "TR" . sprintf('%03d', $count_berobat);
+        $max_no = DB::table('berobat')->max('no_transaksi');
+        $str_kode = substr($max_no, 2, 3);
+        $int_kode = intval($str_kode);
+
+        $data['no_transaksi'] = "TR" . sprintf('%03d', ($int_kode + 1));
         return view('berobat-add', $data);
     }
     function store(Request $request)
@@ -64,10 +67,12 @@ class BerobatController extends Controller
             $data['pasiens'] = DB::table('pasien')->get();
             $data['dokter'] = DB::table('dokter')->get();
             $data['berobat'] = DB::table('berobat')->where('no_transaksi', $id)->first();
+            // get tanggal berobat
             $tanggal_berobat = DB::table('berobat')->where('no_transaksi', $id)->first()->tanggal_berobat;
-            $data['tanggal'] = date_format(date_create($tanggal_berobat), 'j');
-            $data['bulan'] = date_format(date_create($tanggal_berobat), 'n');
-            $data['tahun'] = date_format(date_create($tanggal_berobat), 'Y');
+            $data['tanggal'] = date_format(date_create($tanggal_berobat), 'j'); // int
+            $data['bulan'] = date_format(date_create($tanggal_berobat), 'n'); // int
+            $data['tahun'] = date_format(date_create($tanggal_berobat), 'Y'); //
+
             return view('berobat-edit', $data);
         } else {
             return redirect()->route('berobat.index')->with('pesan', 'Data tidak ditemukan.');
