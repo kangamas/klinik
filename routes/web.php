@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+Route::get('/test', function () {
+    $date = date_create("2021-01-08");
+    echo date_format($date, 'j');
+});
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/berobat', [BerobatController::class, 'get_datas'])->name('berobat.index');

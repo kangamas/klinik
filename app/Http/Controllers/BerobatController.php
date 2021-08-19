@@ -51,28 +51,27 @@ class BerobatController extends Controller
         DB::table('berobat')->insert([
             'no_transaksi' => $request->no_transaksi,
             'pasien_id' => $request->pasien_id,
-            'tanggal_berobat' => $request->tahun."-".$request->bulan.'-'.$request->tanggal,
+            'tanggal_berobat' => $request->tahun . "-" . $request->bulan . '-' . $request->tanggal,
             'dokter_id' => $request->dokter_id,
             'keluhan' => $request->keluhan,
             'biaya_adm' => $request->biaya_adm
         ]);
-        return redirect()->route('berobat.index')->with('pesan','Data berhasil disimpan.');
+        return redirect()->route('berobat.index')->with('pesan', 'Data berhasil disimpan.');
     }
     function edit(Request $request, $id)
     {
-        if (DB::table('berobat')->where('no_transaksi',$id)->exists()) {
+        if (DB::table('berobat')->where('no_transaksi', $id)->exists()) {
             $data['pasiens'] = DB::table('pasien')->get();
             $data['dokter'] = DB::table('dokter')->get();
-            $data['berobat'] = DB::table('berobat')->where('no_transaksi',$id)->first();
-            $tanggal_berobat = DB::table('berobat')->where('no_transaksi',$id)->first()->tanggal_berobat;
-            // $data['tanggal'] = strtotime($tanggal_berobat,date("d"));
-            // $data['bulan'] = strtotime($tanggal_berobat,date("m"));
-            // $data['tahun'] = strtotime($tanggal_berobat,date("Y"));
+            $data['berobat'] = DB::table('berobat')->where('no_transaksi', $id)->first();
+            $tanggal_berobat = DB::table('berobat')->where('no_transaksi', $id)->first()->tanggal_berobat;
+            $data['tanggal'] = date_format(date_create($tanggal_berobat), 'j');
+            $data['bulan'] = date_format(date_create($tanggal_berobat), 'n');
+            $data['tahun'] = date_format(date_create($tanggal_berobat), 'Y');
             return view('berobat-edit', $data);
-        }else{
-            return redirect()->route('berobat.index')->with('pesan','Data tidak ditemukan.');
+        } else {
+            return redirect()->route('berobat.index')->with('pesan', 'Data tidak ditemukan.');
         }
-
     }
     function update(Request $request, $id)
     {
@@ -86,27 +85,27 @@ class BerobatController extends Controller
             'keluhan' => 'required|string',
             'biaya_adm' => 'required|numeric',
         ]);
-        $edit = DB::table('berobat')->where('no_transaksi',$id)->update([
+        $edit = DB::table('berobat')->where('no_transaksi', $id)->update([
             'pasien_id' => $request->pasien_id,
-            'tanggal_berobat' => $request->tahun."-".$request->bulan.'-'.$request->tanggal,
+            'tanggal_berobat' => $request->tahun . "-" . $request->bulan . '-' . $request->tanggal,
             'dokter_id' => $request->dokter_id,
             'keluhan' => $request->keluhan,
             'biaya_adm' => $request->biaya_adm
         ]);
         if ($edit) {
-            $pesan= "Data berhasil diupdate.";
-        }else{
+            $pesan = "Data berhasil diupdate.";
+        } else {
             $pesan = "Data Tidak berhasil diupdate";
         }
-        return redirect()->route('berobat.index')->with('pesan',$pesan);
+        return redirect()->route('berobat.index')->with('pesan', $pesan);
     }
     function delete($id)
     {
-        if (DB::table('berobat')->where('no_transaksi',$id)->exists()) {
-            DB::table('berobat')->where('no_transaksi',$id)->delete();
-            return redirect()->route('berobat.index')->with('pesan','Data berhasil dihapus.');
-        }else{
-            return redirect()->route('berobat.index')->with('pesan','Data tidak ditemukan.');
+        if (DB::table('berobat')->where('no_transaksi', $id)->exists()) {
+            DB::table('berobat')->where('no_transaksi', $id)->delete();
+            return redirect()->route('berobat.index')->with('pesan', 'Data berhasil dihapus.');
+        } else {
+            return redirect()->route('berobat.index')->with('pesan', 'Data tidak ditemukan.');
         }
     }
 }

@@ -1,26 +1,16 @@
-<ul class="nav flex-column">
-    <li class="nav-item">
-        <a class="nav-link active" href="#">Data Pasien</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Data Dokter</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Data Poli</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('berobat.index')}}">Data Berobat</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">List Dokter</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">List Pasien</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">List Data Berobat</a>
-    </li>
-</ul>
+<!-- Sidebar-->
+<div class="border-end bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading border-bottom bg-secondary  text-light">MENU</div>
+    <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Data Pasien</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Data Dokter</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Data Poli</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3"
+            href="{{route('berobat.index')}}">Berobat</a>
+        <a class="list-group-item list-group-item-action list-group-item-light disabled p-3 bg-secondary text-light"
+            href="#!" aria-disabled="true">LAPORAN</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">List Data Dokter</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">List Data Poli</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">List Data Berobat</a>
+    </div>
+</div>
